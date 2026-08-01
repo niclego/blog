@@ -5,7 +5,11 @@ Write Markdown, push to `main`, and a GitHub Action publishes the site.
 
 ## Quick start
 
+Requires **Node 24** (the active LTS). The version lives in `.nvmrc`, so
+`nvm use` picks it up and CI reads the same file — there's one place to change it.
+
 ```bash
+nvm use          # or: fnm use
 npm install
 npm run dev      # http://localhost:4321/blog
 ```

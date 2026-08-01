@@ -1,6 +1,10 @@
 ---
 import { SITE_TITLE } from '../consts';
 import { path } from '../utils/url';
+// EB Garamond, self-hosted via Fontsource — no Google Fonts request. This
+// stylesheet declares every subset, but `unicode-range` means a reader only
+// ever downloads the one their text needs (~43KB of latin, for English).
+import '@fontsource-variable/eb-garamond/wght.css';
 import '../styles/global.css';
 
 interface Props {
