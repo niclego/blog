@@ -14,13 +14,23 @@
   --text-faint: #96938c;
   --border: #e5e3df;
   --border-strong: #d3d0ca;
-  --accent: #b3441d;
-  --accent-hover: #8e3517;
-  --selection: #f6ddd2;
+
+  /* Madder — the red dye of medieval Europe, and the red in "ancient" tartan
+     setts. A warmer, earthier relative of the burnt orange this replaced. */
+  --accent: #9d3b26;
+  --accent-hover: #7d2d1c;
+
+  /* Woad, the blue of the ancient Britons. Used only on tags and footer links.
+     Red for emphasis and blue for the small things is the medieval
+     rubrication convention — the reason these two colours belong together. */
+  --accent-cool: #2f4b6e;
+  --accent-cool-hover: #1f3550;
+
+  --selection: #f3dcd4;
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-serif: 'EB Garamond Variable', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono:
     ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
 
@@ -40,8 +50,10 @@
   --text-faint: #6f6c66;
   --border: #2b2a28;
   --border-strong: #3d3b38;
-  --accent: #f08a5f;
-  --accent-hover: #f5a582;
+  --accent: #d9714f;
+  --accent-hover: #e69073;
+  --accent-cool: #8fb3d9;
+  --accent-cool-hover: #aecbe8;
   --selection: #4a2a1a;
 }
 
@@ -57,8 +69,10 @@
     --text-faint: #6f6c66;
     --border: #2b2a28;
     --border-strong: #3d3b38;
-    --accent: #f08a5f;
-    --accent-hover: #f5a582;
+    --accent: #d9714f;
+    --accent-hover: #e69073;
+    --accent-cool: #8fb3d9;
+    --accent-cool-hover: #aecbe8;
     --selection: #4a2a1a;
   }
 }
