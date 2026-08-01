@@ -2,9 +2,9 @@
  * Site-wide settings. Edit these and the whole site follows.
  */
 
-export const SITE_TITLE = 'Nic Legorreta';
+export const SITE_TITLE = 'Nick Le Gorrec';
 export const SITE_DESCRIPTION = 'Notes on software, systems, and whatever else I am chewing on.';
-export const AUTHOR = 'Nic Legorreta';
+export const AUTHOR = 'Nick Le Gorrec';
 
 /** Shown in the footer. Delete any line you do not want. */
 export const SOCIALS: { label: string; href: string }[] = [
