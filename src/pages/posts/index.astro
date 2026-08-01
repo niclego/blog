@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getPosts } from '../../utils/posts';
+import { path } from '../../utils/url';
+
+const posts = await getPosts();
+
+// Group posts by year for the archive listing.
+const byYear = posts.reduce<Map<number, typeof posts>>((acc, post) => {
+  const year = post.data.pubDate.getUTCFullYear();
+  acc.set(year, [...(acc.get(year) ?? []), post]);
+  return acc;
+}, new Map());
+
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<BaseLayout title="Posts" description="Everything I have written, newest first.">
+  <h1>Posts</h1>
+
+  {posts.length === 0 && <p class="muted">Nothing published yet.</p>}
+
+  {
+    years.map((year) => (
+      <section class="year">
+        <h2>{year}</h2>
+        <ul>
+          {byYear.get(year)!.map((post) => (
+            <li>
+              <a href={path(`/posts/${post.id}`)}>{post.data.title}</a>
+              <span class="meta">
+                <FormattedDate date={post.data.pubDate} format="short" />
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .year {
+    margin-top: 2.5rem;
+  }
+
+  .year h2 {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    color: var(--text-faint);
+    margin: 0 0 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.45rem 0;
+    max-width: none;
+  }
+
+  li + li {
+    margin-top: 0;
+  }
+
+  li a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: var(--accent);
+  }
+
+  li .meta {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+</style>
