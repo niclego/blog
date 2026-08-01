@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Sitemap is generated at build time by @astrojs/sitemap.
+# If you switch to a custom domain, update the host here to match.
+Sitemap: https://niclego.github.io/blog/sitemap-index.xml

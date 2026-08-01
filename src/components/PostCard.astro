@@ -1,0 +1,70 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import { path } from '../utils/url';
+import type { Post } from '../utils/posts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article>
+  <h2>
+    <a href={path(`/posts/${post.id}`)}>{post.data.title}</a>
+    {post.data.draft && <span class="draft">Draft</span>}
+  </h2>
+  <p class="meta"><FormattedDate date={post.data.pubDate} /></p>
+  <p class="excerpt">{post.data.description}</p>
+</article>
+
+<style>
+  article {
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  article:first-of-type {
+    padding-top: 0;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    margin: 0 0 0.3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  h2 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    color: var(--accent);
+  }
+
+  .draft {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+
+  .meta {
+    margin: 0 0 0.5rem;
+  }
+
+  .excerpt {
+    margin: 0;
+    color: var(--text-muted);
+  }
+</style>

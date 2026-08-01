@@ -1,0 +1,60 @@
+---
+import { AUTHOR, SOCIALS } from '../consts';
+import { path } from '../utils/url';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="inner">
+    <p class="meta">© {year} {AUTHOR}</p>
+
+    <nav aria-label="Elsewhere">
+      {
+        SOCIALS.map((s) => (
+          <a href={s.href} rel="me noopener">
+            {s.label}
+          </a>
+        ))
+      }
+      <a href={path('/rss.xml')}>RSS</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .inner {
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding: 1.5rem 1.25rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.1rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+</style>

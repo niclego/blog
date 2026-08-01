@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR } from '../consts';
+---
+
+<BaseLayout title="About" description={`A little about ${AUTHOR}.`}>
+  <h1>About</h1>
+
+  <p>
+    Hi, I'm {AUTHOR}. This is where I write things down — mostly about software, sometimes about
+    whatever else has my attention.
+  </p>
+
+  <p>
+    Replace this page with your own words: it lives at <code>src/pages/about.astro</code>.
+  </p>
+</BaseLayout>

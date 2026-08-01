@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../utils/posts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { path } from '../utils/url';
+
+const posts = (await getPosts()).slice(0, 5);
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <section class="intro">
+    <h1>{SITE_TITLE}</h1>
+    <p class="lede">{SITE_DESCRIPTION}</p>
+  </section>
+
+  <section aria-labelledby="recent">
+    <h2 id="recent" class="section-heading">Recent posts</h2>
+
+    {
+      posts.length === 0 ? (
+        <p class="muted">
+          No posts yet. Drop a Markdown file in <code>src/content/blog/</code> to get started.
+        </p>
+      ) : (
+        posts.map((post) => <PostCard post={post} />)
+      )
+    }
+
+    <p class="more"><a href={path('/posts')}>All posts →</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    margin-bottom: 3rem;
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .section-heading {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-faint);
+    margin: 0 0 1.5rem;
+  }
+
+  .more {
+    margin-top: 1.75rem;
+    font-size: 0.92rem;
+  }
+
+  .more a {
+    text-decoration: none;
+  }
+
+  .more a:hover {
+    text-decoration: underline;
+  }
+</style>

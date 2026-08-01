@@ -1,0 +1,81 @@
+---
+import { SITE_TITLE, NAV } from '../consts';
+import { path } from '../utils/url';
+import ThemeToggle from './ThemeToggle.astro';
+
+const current = Astro.url.pathname.replace(/\/$/, '');
+
+const isActive = (href: string) => {
+  const target = path(href).replace(/\/$/, '');
+  return current === target || current.startsWith(`${target}/`);
+};
+---
+
+<header>
+  <div class="inner">
+    <a class="brand" href={path('/')}>{SITE_TITLE}</a>
+
+    <nav aria-label="Main">
+      {
+        NAV.map((item) => (
+          <a href={path(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .inner {
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .brand:hover {
+    color: var(--accent);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  nav a {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--text);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--text);
+    font-weight: 550;
+  }
+</style>

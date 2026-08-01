@@ -1,0 +1,20 @@
+---
+interface Props {
+  date: Date;
+  /** 'long' → August 1, 2026 · 'short' → Aug 1, 2026 */
+  format?: 'long' | 'short';
+}
+
+const { date, format = 'long' } = Astro.props;
+
+// Force UTC so the rendered date matches the front matter regardless of the
+// timezone of the machine running the build.
+const formatted = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: format === 'long' ? 'long' : 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<time datetime={date.toISOString()}>{formatted}</time>
