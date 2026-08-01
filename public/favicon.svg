@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- A moucheture d'hermine, set on the black of the Gwenn ha Du. -->
   <rect width="64" height="64" rx="14" fill="#1b1a18"/>
-  <path d="M18 44V20h9.5c6.2 0 10 3.1 10 8.1 0 3.4-1.9 5.8-5 6.8 3.8.8 6.2 3.5 6.2 7.3 0 5.3-4 8.8-10.6 8.8H18Z"
-        fill="#fdfdfc" transform="translate(0,-2) scale(1)"/>
+  <g fill="#fdfdfc" transform="translate(4 4) scale(2.33)">
+    <circle cx="12" cy="4.2" r="1.35"/>
+    <circle cx="8.2" cy="6.5" r="1.28"/>
+    <circle cx="15.8" cy="6.5" r="1.28"/>
+    <path d="M12 8.4C13.15 11.7 14.85 14.1 16.75 15.7L18.5 19.8C16.5 18.5 15.1 17.9 14.15 17.85C13.35 18.95 12.85 20.1 12 21.4C11.15 20.1 10.65 18.95 9.85 17.85C8.9 17.9 7.5 18.5 5.5 19.8L7.25 15.7C9.15 14.1 10.85 11.7 12 8.4Z"/>
+  </g>
 </svg>
