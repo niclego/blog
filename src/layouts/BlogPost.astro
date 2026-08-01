@@ -107,11 +107,11 @@ const { title, description, pubDate, updatedDate, tags, draft } = post.data;
     padding: 0.1rem 0.5rem;
   }
 
-  /* A rubricated opening letter, the way a scribe would have marked the start
-     of a text. Scoped to `:first-child` rather than `:first-of-type` so it
-     only fires when a post genuinely opens on a paragraph — a post starting
-     with a heading or a list gets no drop cap instead of one stranded
-     halfway down the page. */
+  /* An illuminated opening letter, the way a scribe would have marked the
+     start of a text. Scoped to `:first-child` rather than `:first-of-type` so
+     it only fires when a post genuinely opens on a paragraph — a post
+     starting with a heading or a list gets no drop cap instead of one
+     stranded halfway down the page. */
   .prose > :global(p:first-child::first-letter) {
     float: left;
     font-family: var(--font-serif);
@@ -161,10 +161,10 @@ const { title, description, pubDate, updatedDate, tags, draft } = post.data;
     margin: 0;
   }
 
-  /* Tags carry the cool half of the rubrication pairing. */
+  /* Tags sit a step back from links, on the softer tint of the same blue. */
   .tags a {
     font-size: 0.82rem;
-    color: var(--accent-cool);
+    color: var(--accent-soft);
     text-decoration: none;
     background: var(--bg-subtle);
     border: 1px solid var(--border);
@@ -173,8 +173,8 @@ const { title, description, pubDate, updatedDate, tags, draft } = post.data;
   }
 
   .tags a:hover {
-    color: var(--accent-cool-hover);
-    border-color: var(--accent-cool);
+    color: var(--accent-soft-hover);
+    border-color: var(--accent-soft);
   }
 
   .pager {

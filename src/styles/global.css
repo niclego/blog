@@ -15,18 +15,24 @@
   --border: #e5e3df;
   --border-strong: #d3d0ca;
 
-  /* Madder — the red dye of medieval Europe, and the red in "ancient" tartan
-     setts. A warmer, earthier relative of the burnt orange this replaced. */
-  --accent: #9d3b26;
-  --accent-hover: #7d2d1c;
+  /* Breton marine. The Gwenn ha Du carries no red and no gold — Brittany's
+     colours are black, white, and the blue of the marinière and of Quimper
+     faience. Slightly greyed rather than a clean cobalt, so it sits closer to
+     wet granite than to a default link blue. */
+  --accent: #27496f;
+  --accent-hover: #16304d;
 
-  /* Woad, the blue of the ancient Britons. Used only on tags and footer links.
-     Red for emphasis and blue for the small things is the medieval
-     rubrication convention — the reason these two colours belong together. */
-  --accent-cool: #2f4b6e;
-  --accent-cool-hover: #1f3550;
+  /* The same blue stepped back, for secondary marks like tags. One hue doing
+     two jobs keeps the palette as austere as the flag it comes from. */
+  --accent-soft: #3d6390;
+  --accent-soft-hover: #27496f;
 
-  --selection: #f3dcd4;
+  --selection: #dbe5f1;
+
+  /* Moucheture d'hermine — the ermine spot of the Breton arms. Masked rather
+     than drawn inline so it takes its colour from the tokens above and works
+     in either theme. */
+  --ermine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='%23000'%3E%3Ccircle cx='12' cy='4.2' r='1.35'/%3E%3Ccircle cx='8.2' cy='6.5' r='1.28'/%3E%3Ccircle cx='15.8' cy='6.5' r='1.28'/%3E%3Cpath d='M12 8.4C13.15 11.7 14.85 14.1 16.75 15.7L18.5 19.8C16.5 18.5 15.1 17.9 14.15 17.85C13.35 18.95 12.85 20.1 12 21.4C11.15 20.1 10.65 18.95 9.85 17.85C8.9 17.9 7.5 18.5 5.5 19.8L7.25 15.7C9.15 14.1 10.85 11.7 12 8.4Z'/%3E%3C/g%3E%3C/svg%3E");
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -50,11 +56,11 @@
   --text-faint: #6f6c66;
   --border: #2b2a28;
   --border-strong: #3d3b38;
-  --accent: #d9714f;
-  --accent-hover: #e69073;
-  --accent-cool: #8fb3d9;
-  --accent-cool-hover: #aecbe8;
-  --selection: #4a2a1a;
+  --accent: #8ab0d8;
+  --accent-hover: #a8c6e6;
+  --accent-soft: #7d9fc4;
+  --accent-soft-hover: #9dbbdb;
+  --selection: #1e3550;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -69,11 +75,11 @@
     --text-faint: #6f6c66;
     --border: #2b2a28;
     --border-strong: #3d3b38;
-    --accent: #d9714f;
-    --accent-hover: #e69073;
-    --accent-cool: #8fb3d9;
-    --accent-cool-hover: #aecbe8;
-    --selection: #4a2a1a;
+    --accent: #8ab0d8;
+    --accent-hover: #a8c6e6;
+    --accent-soft: #7d9fc4;
+    --accent-soft-hover: #9dbbdb;
+    --selection: #1e3550;
   }
 }
 
@@ -203,6 +209,19 @@ hr {
   border: 0;
   border-top: 1px solid var(--border);
   margin: 2.5rem 0;
+}
+
+/* A section break marked with an ermine spot rather than a rule. Guarded on
+   `mask-image` so a browser without it keeps the hairline above instead of
+   rendering a solid bar. */
+@supports (mask-image: url('')) or (-webkit-mask-image: url('')) {
+  hr {
+    border-top: 0;
+    height: 2rem;
+    background-color: var(--accent-soft);
+    -webkit-mask: var(--ermine) center / auto 100% no-repeat;
+    mask: var(--ermine) center / auto 100% no-repeat;
+  }
 }
 
 blockquote {
